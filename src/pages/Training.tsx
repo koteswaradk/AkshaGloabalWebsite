@@ -89,7 +89,7 @@ export default function Training() {
   }
 
   return (
-    <div className="bg-white dark:bg-[#070B14] min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-200">
+    <div className="bg-m3-surface dark:bg-m3-dark-surface min-h-screen">
       <SEO
         title="Developer Training Tracks – Android, iOS, GenAI & KMP"
         description="Master modern development with Aksha Globals' instructor-led courses in Android Kotlin, iOS SwiftUI, Generative AI & LLMs, and Kotlin Multiplatform."
@@ -107,12 +107,11 @@ export default function Training() {
         schema={trainingSchema}
       />
       {/* Hero */}
-      <div className="bg-slate-900 dark:bg-slate-950 text-white py-16 border-b border-slate-800">
+      <div className="bg-gradient-to-br from-m3-primary-10 to-m3-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-bold tracking-widest uppercase text-blue-400 dark:text-cyan-400 mb-2 inline-block">Talent & Academy</span>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Professional Training Programs</h1>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-            Master production-level technologies with industry-aligned tracks in Android, iOS, GenAI, Prompt Engineering, KMP, and CMP.
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Professional Training Programs</h1>
+          <p className="text-m3-primary-container text-lg max-w-2xl mx-auto">
+            Master the latest technologies with industry-aligned tracks in Android, iOS, GenAI, Prompt Engineering, KMP, and CMP.
           </p>
         </div>
       </div>
@@ -124,29 +123,30 @@ export default function Training() {
             <div
               key={course.id}
               onClick={() => handleCourseSelect(course.id)}
-              className={`group bg-white dark:bg-slate-900/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 ${
+              className={`group bg-m3-surface-container-lowest dark:bg-m3-dark-surface-container-high rounded-m3-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 ${
                 selectedCourse === course.id
-                  ? 'border-blue-600 dark:border-cyan-400 shadow-xl shadow-blue-500/10'
-                  : 'border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg hover:border-blue-400 dark:hover:border-cyan-500/50'
+                  ? 'border-m3-primary dark:border-m3-dark-primary shadow-m3-3'
+                  : 'border-transparent shadow-m3-1 hover:shadow-m3-3 hover:border-m3-primary dark:hover:border-m3-dark-primary'
               }`}
+              style={selectedCourse === course.id ? { animation: 'cardSelectPulse 0.6s ease-out' } : undefined}
             >
               <div className={`bg-gradient-to-br ${course.color} p-6 sm:p-10 flex items-center justify-center`}>
                 {courseIcons[course.id] || <span className="text-5xl sm:text-7xl">{course.icon}</span>}
               </div>
               <div className="p-6">
-                <h2 className={`text-xl font-bold mb-1 transition-colors duration-200 ${
+                <h2 className={`text-xl font-bold mb-1 transition-colors duration-300 ${
                   selectedCourse === course.id
-                    ? 'text-blue-600 dark:text-cyan-400'
-                    : 'text-slate-900 dark:text-white'
+                    ? 'text-m3-primary dark:text-m3-dark-primary'
+                    : 'text-m3-on-surface dark:text-m3-dark-on-surface'
                 }`}>{course.name}</h2>
-                <p className="text-blue-600 dark:text-cyan-400 text-sm font-semibold mb-3">{course.tagline}</p>
-                <p className="text-slate-600 dark:text-slate-300 text-sm mb-5 line-clamp-2 leading-relaxed">{course.description}</p>
+                <p className="text-m3-primary dark:text-m3-dark-primary text-sm font-medium mb-3">{course.tagline}</p>
+                <p className="text-m3-on-surface-variant dark:text-m3-dark-on-surface-variant text-sm mb-4 line-clamp-2">{course.description}</p>
                 <div className="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-3">
                   {course.levels.map(level => (
-                    <div key={level.name} className="flex-1 min-w-[80px] bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 rounded-xl p-2.5 text-center">
-                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200">{level.name}</div>
-                      <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{level.duration}</div>
-                      <div className="text-sm font-bold text-blue-600 dark:text-cyan-400 mt-1">
+                    <div key={level.name} className="flex-1 min-w-[80px] bg-m3-surface-container dark:bg-m3-dark-surface-container rounded-m3 p-2 sm:p-3 text-center">
+                      <div className="text-xs font-semibold text-m3-on-surface dark:text-m3-dark-on-surface">{level.name}</div>
+                      <div className="text-xs text-m3-on-surface-variant dark:text-m3-dark-on-surface-variant mt-0.5">{level.duration}</div>
+                      <div className="text-sm font-bold text-m3-primary dark:text-m3-dark-primary mt-1">
                         ₹{level.price.toLocaleString()}
                       </div>
                     </div>
@@ -154,7 +154,7 @@ export default function Training() {
                 </div>
                 <Link
                   to={`/training/${course.id}`}
-                  className="mt-5 inline-flex items-center gap-1 text-blue-600 dark:text-cyan-400 text-sm font-bold hover:underline"
+                  className="mt-4 inline-block text-m3-primary dark:text-m3-dark-primary text-sm font-semibold hover:underline"
                   onClick={(e) => e.stopPropagation()}
                 >
                   View Course Details →
@@ -163,11 +163,7 @@ export default function Training() {
             </div>
           ))}
         </div>
-        {selectedCourseData && (
-          <div className="mt-12">
-            <TrainingSpotlight course={selectedCourseData} title="Selected Training" />
-          </div>
-        )}
+        {selectedCourseData && <TrainingSpotlight course={selectedCourseData} title="Selected Training" />}
       </div>
     </div>
   )

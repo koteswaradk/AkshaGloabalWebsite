@@ -3,7 +3,6 @@ import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import HomeClassic from './pages/HomeClassic'
 import Products from './pages/Products'
 import ProductDetail from './pages/ProductDetail'
 import Training from './pages/Training'
@@ -21,12 +20,11 @@ function AppLayout() {
   const isStudio = location.pathname === '/studio'
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#070B14] text-slate-900 dark:text-slate-100 transition-colors duration-200">
+    <div className="min-h-screen flex flex-col bg-m3-surface dark:bg-m3-dark-surface text-m3-on-surface dark:text-m3-dark-on-surface">
       <Navbar />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/classic" element={<HomeClassic />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/training" element={<Training />} />

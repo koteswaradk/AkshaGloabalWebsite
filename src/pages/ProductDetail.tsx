@@ -20,10 +20,10 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#070B14]">
+      <div className="min-h-screen flex items-center justify-center bg-m3-surface dark:bg-m3-dark-surface">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Product Not Found</h1>
-          <Link to="/products" className="text-blue-600 dark:text-cyan-400 font-semibold hover:underline">← Back to Products</Link>
+          <h1 className="text-4xl font-bold text-m3-on-surface dark:text-m3-dark-on-surface mb-4">Product Not Found</h1>
+          <Link to="/products" className="text-m3-primary hover:underline">← Back to Products</Link>
         </div>
       </div>
     )
@@ -61,10 +61,11 @@ export default function ProductDetail() {
     }
   }
 
+  // Optimize description between 120-160 characters
   const metaDescription = `${product.name}: ${product.tagline}. Download on ${platformSpec} with ${product.features[0] || 'modern UI and privacy'}.`
 
   return (
-    <div className="bg-white dark:bg-[#070B14] min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-200">
+    <div className="bg-m3-surface dark:bg-m3-dark-surface min-h-screen">
       <SEO
         title={`${product.name} – ${product.tagline}`}
         description={metaDescription}
@@ -83,25 +84,25 @@ export default function ProductDetail() {
       {/* Hero */}
       <div className={`bg-gradient-to-br ${product.color} text-white py-16`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to="/products" className="text-white/80 hover:text-white text-sm mb-6 inline-flex items-center gap-1 font-semibold">
+          <Link to="/products" className="text-white/80 hover:text-white text-sm mb-6 inline-flex items-center gap-1">
             ← All Products
           </Link>
           <div className="flex flex-col md:flex-row items-center gap-8 mt-4">
             {product.icon && product.icon.match(/\.(png|jpg|jpeg|gif|svg|webp)$/i) ? (
-              <img src={product.icon} alt={product.name} className="w-24 h-24 md:w-32 md:h-32 object-contain bg-white/10 rounded-2xl p-2 backdrop-blur-sm shadow-xl" />
+              <img src={product.icon} alt={product.name} className="w-24 h-24 md:w-32 md:h-32 object-contain" />
             ) : (
               <div className="text-6xl md:text-8xl">{product.icon || ''}</div>
             )}
             <div>
-              <span className="text-white/80 text-xs font-bold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">{product.category}</span>
-              <h1 className="text-4xl md:text-5xl font-extrabold mt-3 mb-2 tracking-tight">{product.name}</h1>
+              <span className="text-white/70 text-sm font-medium uppercase tracking-wider">{product.category}</span>
+              <h1 className="text-4xl md:text-5xl font-bold mt-1 mb-2">{product.name}</h1>
               <p className="text-xl text-white/90">{product.tagline}</p>
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <a
                   href={product.playStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 bg-slate-900/90 text-white rounded-full hover:bg-slate-900 transition-colors text-sm font-semibold shadow-md"
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-m3-primary-10 text-white rounded-full hover:bg-m3-primary transition-colors duration-200 text-sm font-semibold"
                 >
                   <PlayStoreIcon />
                   Get on Google Play
@@ -110,7 +111,7 @@ export default function ProductDetail() {
                   href={product.appStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 bg-white/20 text-white rounded-full hover:bg-white/30 backdrop-blur-sm transition-colors text-sm font-semibold shadow-md"
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-m3-primary-10 text-white rounded-full hover:bg-m3-primary transition-colors duration-200 text-sm font-semibold"
                 >
                   <AppStoreIcon />
                   Download on App Store
@@ -121,24 +122,24 @@ export default function ProductDetail() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main content */}
-          <div className="lg:col-span-2 space-y-10">
+          <div className="lg:col-span-2 space-y-8">
             {/* Description */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">About {product.name}</h2>
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">{product.description}</p>
+              <h2 className="text-2xl font-bold text-m3-on-surface dark:text-m3-dark-on-surface mb-4">About {product.name}</h2>
+              <p className="text-m3-on-surface-variant dark:text-m3-dark-on-surface-variant leading-relaxed text-lg">{product.description}</p>
             </div>
 
             {/* Features */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Key Features</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <h2 className="text-2xl font-bold text-m3-on-surface dark:text-m3-dark-on-surface mb-4">Key Features</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {product.features.map((feature, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-xl">
-                    <span className="text-blue-600 dark:text-cyan-400 font-bold mt-0.5">✓</span>
-                    <span className="text-slate-700 dark:text-slate-300 text-sm font-medium">{feature}</span>
+                  <div key={i} className="flex items-start gap-3 p-3 bg-m3-surface-container dark:bg-m3-dark-surface-container rounded-m3">
+                    <span className="text-m3-primary font-bold mt-0.5">✓</span>
+                    <span className="text-m3-on-surface-variant dark:text-m3-dark-on-surface-variant text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -147,14 +148,14 @@ export default function ProductDetail() {
 
           {/* Specs Sidebar */}
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Specifications</h2>
-            <div className="bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+            <h2 className="text-2xl font-bold text-m3-on-surface dark:text-m3-dark-on-surface mb-4">Specifications</h2>
+            <div className="bg-m3-surface-container dark:bg-m3-dark-surface-container rounded-m3-xl overflow-hidden">
               <table className="w-full">
                 <tbody>
                   {product.specs.map((spec, i) => (
-                    <tr key={i} className={i % 2 === 0 ? 'bg-white dark:bg-slate-900/40' : 'bg-slate-50 dark:bg-slate-800/40'}>
-                      <td className="px-4 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800">{spec.label}</td>
-                      <td className="px-4 py-3 text-sm font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800">{spec.value}</td>
+                    <tr key={i} className={i % 2 === 0 ? 'bg-m3-surface-container-lowest dark:bg-m3-dark-surface-container' : 'bg-m3-surface-container dark:bg-m3-dark-surface-container-high'}>
+                      <td className="px-4 py-3 text-sm font-medium text-m3-on-surface-variant dark:text-m3-dark-on-surface-variant">{spec.label}</td>
+                      <td className="px-4 py-3 text-sm font-semibold text-m3-on-surface dark:text-m3-dark-on-surface">{spec.value}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -166,7 +167,7 @@ export default function ProductDetail() {
                 href={product.playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full px-4 py-3 bg-blue-600 dark:bg-cyan-500 hover:bg-blue-700 dark:hover:bg-cyan-400 text-white dark:text-slate-950 rounded-full transition-all font-semibold shadow-sm"
+                className="flex items-center gap-3 w-full px-4 py-3 bg-m3-primary hover:bg-m3-primary/90 text-m3-on-primary rounded-full transition-colors duration-200 font-semibold"
               >
                 <PlayStoreIcon />
                 Google Play Store
@@ -175,7 +176,7 @@ export default function ProductDetail() {
                 href={product.appStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full px-4 py-3 bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white rounded-full transition-all font-semibold shadow-sm border border-slate-700"
+                className="flex items-center gap-3 w-full px-4 py-3 bg-m3-secondary hover:bg-m3-secondary/90 text-m3-on-secondary rounded-full transition-colors duration-200 font-semibold"
               >
                 <AppStoreIcon />
                 Apple App Store

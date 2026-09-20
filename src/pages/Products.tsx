@@ -29,7 +29,7 @@ export default function Products() {
   }
 
   return (
-    <div className="bg-white dark:bg-[#070B14] min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-200">
+    <div className="bg-m3-surface dark:bg-m3-dark-surface min-h-screen">
       <SEO
         title="Mobile Apps Catalog – Android & iOS Solutions"
         description="Discover Aksha Globals' suite of high-performance mobile apps: Om SaiBaba prayers, CallSecure dialer, Resona meditation soundscapes, and DriveShield safety."
@@ -48,12 +48,11 @@ export default function Products() {
         schema={productsSchema}
       />
       {/* Hero */}
-      <div className="bg-slate-900 dark:bg-slate-950 text-white py-16 border-b border-slate-800">
+      <div className="bg-gradient-to-br from-m3-primary-10 to-m3-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-bold tracking-widest uppercase text-blue-400 dark:text-cyan-400 mb-2 inline-block">Portfolio & Products</span>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Our Products</h1>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-            Discover our suite of high-impact mobile and web applications built with precision architecture to solve real-world problems.
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Products</h1>
+          <p className="text-m3-primary-container text-lg max-w-2xl mx-auto">
+            Discover our suite of powerful mobile and web applications built to solve real-world problems.
           </p>
         </div>
       </div>
@@ -65,31 +64,28 @@ export default function Products() {
             <Link
               key={product.id}
               to={`/products/${product.id}`}
-              className="group bg-white dark:bg-slate-900/80 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-blue-400 dark:hover:border-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 dark:hover:shadow-cyan-950/20 hover:-translate-y-1 flex flex-col"
+              className="group bg-m3-surface-container-lowest dark:bg-m3-dark-surface-container-high rounded-m3-xl shadow-m3-1 overflow-hidden hover:shadow-m3-3 transition-all duration-300 hover:-translate-y-1 flex flex-col"
             >
-              <div className={`bg-gradient-to-br ${product.color} p-6 sm:p-8 flex items-center justify-center h-48 sm:h-44`}>
+              <div className={`bg-gradient-to-br ${product.color} p-6 sm:p-8 flex items-center justify-center h-48 sm:h-40`}>
                 {product.icon && product.icon.match(/\.(png|jpg|jpeg|gif|svg|webp)$/i) ? (
                   <img src={product.icon} alt={product.name} className="w-full h-full object-contain" />
                 ) : (
                   <span className="text-6xl sm:text-6xl">{product.icon || ''}</span>
                 )}
               </div>
-              <div className="p-6 flex flex-col justify-between flex-1">
+              <div className="p-6 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <h2 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
-                      {product.name}
-                    </h2>
-                    <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold rounded-full px-2.5 py-0.5 border border-slate-200 dark:border-slate-700">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h2 className="text-xl font-bold text-m3-on-surface dark:text-m3-dark-on-surface">{product.name}</h2>
+                    <span className="text-xs bg-m3-surface-container-high dark:bg-m3-dark-surface-container-highest text-m3-on-surface-variant rounded-full px-2 py-0.5">
                       {product.category}
                     </span>
                   </div>
-                  <p className="text-blue-600 dark:text-cyan-400 text-sm font-semibold mb-2">{product.tagline}</p>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed line-clamp-3">{product.description}</p>
+                  <p className="text-m3-primary dark:text-m3-dark-primary text-sm font-medium mb-2">{product.tagline}</p>
+                  <p className="text-m3-on-surface-variant dark:text-m3-dark-on-surface-variant text-sm line-clamp-3">{product.description}</p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-blue-600 dark:text-cyan-400 text-sm font-bold group-hover:translate-x-0.5 transition-transform duration-200">
-                  <span>View Details</span>
-                  <span>→</span>
+                <div className="mt-4 flex items-center text-m3-primary dark:text-m3-dark-primary text-sm font-semibold group-hover:gap-2 transition-all duration-200">
+                  View Details →
                 </div>
               </div>
             </Link>

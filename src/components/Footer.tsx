@@ -71,7 +71,7 @@ const FooterLogo = () => {
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-16 pb-0 border-t border-slate-800">
+    <footer className="bg-m3-primary-10 dark:bg-m3-dark-surface-container text-m3-dark-on-surface pt-14 pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
 
@@ -81,18 +81,18 @@ export default function Footer() {
               <FooterLogo />
               <div>
                 <div className="text-white text-xl font-bold leading-tight">Aksha Globals</div>
-                <div className="text-blue-400 text-sm font-semibold tracking-wide">Imagination to Innovation</div>
+                <div className="text-m3-primary-container text-sm font-medium">Imagination to Innovation</div>
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-slate-400 mt-4 max-w-md">
-              International software engineering consultancy and developer academy.
-              Empowering global teams to build high-performance native, multiplatform, and AI systems.
+            <p className="text-sm leading-relaxed text-m3-dark-on-surface-variant mt-4">
+              Innovative software solutions and professional training programs.
+              Empowering developers to build the future with cutting-edge technology.
             </p>
           </div>
 
           {/* Connect With Us */}
           <div>
-            <h3 className="text-white text-base font-bold tracking-wide uppercase mb-5">Connect With Us</h3>
+            <h3 className="text-white text-lg font-medium tracking-wide mb-5">Connect With Us</h3>
             <div className="flex gap-3 mb-5">
               {socialLinks.map(social => (
                 <a
@@ -100,26 +100,25 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all duration-200"
+                  className="w-11 h-11 flex items-center justify-center rounded-full bg-m3-dark-primary-container text-m3-dark-on-primary-container hover:bg-m3-primary hover:text-m3-on-primary transition-colors duration-200"
                   aria-label={social.name}
                 >
                   {social.icon}
                 </a>
               ))}
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Follow our publications for technical deep dives into Kotlin Multiplatform, Compose, and mobile architecture.
+            <p className="text-sm text-m3-dark-on-surface-variant leading-relaxed">
+              Join our community for the latest updates, industry insights, and exclusive learning resources.
             </p>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-slate-800/80 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="border-t border-m3-outline-variant/30 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-m3-dark-outline">
           <p>© {new Date().getFullYear()} Aksha Globals. All rights reserved.</p>
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-5">
-            <Link to="/classic" className="hover:text-blue-400 transition-colors duration-200">Classic View</Link>
-            <Link to="/privacy-policy" className="hover:text-slate-300 transition-colors duration-200">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="hover:text-slate-300 transition-colors duration-200">Terms of Service</Link>
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6">
+            <Link to="/privacy-policy" className="hover:text-m3-dark-primary transition-colors duration-200">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-m3-dark-primary transition-colors duration-200">Terms of Service</Link>
           </div>
         </div>
       </div>

@@ -8,10 +8,10 @@ export default function BlogDetail() {
 
   if (!post) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#070B14]">
+      <div className="min-h-screen flex items-center justify-center bg-m3-surface dark:bg-m3-dark-surface">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Post Not Found</h1>
-          <Link to="/blog" className="text-blue-600 dark:text-cyan-400 hover:underline font-semibold">← Back to Blog</Link>
+          <h1 className="text-4xl font-bold text-m3-on-surface dark:text-m3-dark-on-surface mb-4">Post Not Found</h1>
+          <Link to="/blog" className="text-m3-primary hover:underline">← Back to Blog</Link>
         </div>
       </div>
     )
@@ -20,7 +20,7 @@ export default function BlogDetail() {
   const related = blogPosts.filter(p => p.id !== post.id).slice(0, 3)
 
   return (
-    <div className="bg-white dark:bg-[#070B14] min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-200">
+    <div className="bg-m3-surface dark:bg-m3-dark-surface min-h-screen">
       <SEO
         title={post.title}
         description={post.excerpt}
@@ -30,16 +30,16 @@ export default function BlogDetail() {
       {/* Hero */}
       <div className={`bg-gradient-to-br ${post.color} text-white py-16`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to="/blog" className="text-white/80 hover:text-white text-sm mb-6 inline-flex items-center gap-1 font-semibold">
+          <Link to="/blog" className="text-white/80 hover:text-white text-sm mb-6 inline-flex items-center gap-1">
             ← All Posts
           </Link>
           <div className="mt-4">
-            <span className="text-xs font-bold tracking-widest uppercase bg-white/20 backdrop-blur-sm border border-white/30 px-3 py-1 rounded-full">
+            <span className="text-xs font-semibold tracking-widest uppercase bg-white/20 backdrop-blur-sm border border-white/30 px-3 py-0.5 rounded-full">
               {post.category}
             </span>
-            <h1 className="text-3xl md:text-4xl font-extrabold mt-4 mb-3 leading-tight tracking-tight">{post.title}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mt-4 mb-3 leading-tight">{post.title}</h1>
             <div className="flex flex-wrap items-center gap-3 text-sm text-white/80">
-              <span className="font-semibold text-white">{post.author}</span>
+              <span className="font-medium text-white">{post.author}</span>
               <span>·</span>
               <span>{post.date}</span>
               <span>·</span>
@@ -50,56 +50,89 @@ export default function BlogDetail() {
       </div>
 
       {/* Article body */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12">
           {/* Main content */}
           <article className="space-y-6">
             {post.content.map((paragraph, i) => (
               <p
                 key={i}
-                className="text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg"
+                className="text-m3-on-surface-variant dark:text-m3-dark-on-surface-variant leading-relaxed text-base sm:text-lg"
               >
                 {paragraph}
               </p>
             ))}
+          </article>
 
+          {/* Sidebar */}
+          <aside className="space-y-8">
             {/* Tags */}
-            <div className="pt-6 border-t border-slate-200 dark:border-slate-800">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mr-3">Tags:</span>
-              <div className="inline-flex flex-wrap gap-2 mt-2">
+            <div>
+              <h3 className="text-sm font-bold text-m3-on-surface dark:text-m3-dark-on-surface uppercase tracking-wider mb-3">
+                Tags
+              </h3>
+              <div className="flex flex-wrap gap-2">
                 {post.tags.map(tag => (
                   <span
                     key={tag}
-                    className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold rounded-full px-3 py-1 border border-slate-200 dark:border-slate-700"
+                    className="text-xs bg-m3-surface-container-high dark:bg-m3-dark-surface-container-highest text-m3-on-surface-variant dark:text-m3-dark-on-surface-variant rounded-full px-3 py-1"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
             </div>
-          </article>
 
-          {/* Sidebar */}
-          <aside className="space-y-8">
-            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 p-6">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">Related Articles</h3>
-              <div className="space-y-4">
-                {related.map(r => (
-                  <Link
-                    key={r.id}
-                    to={`/blog/${r.id}`}
-                    className="block group"
-                  >
-                    <div className="text-xs font-semibold text-blue-600 dark:text-cyan-400 mb-1">{r.category}</div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors line-clamp-2">
-                      {r.title}
-                    </div>
-                  </Link>
-                ))}
-              </div>
+            {/* CTA */}
+            <div className="bg-m3-primary-container dark:bg-m3-dark-primary-container rounded-m3-xl p-5">
+              <h3 className="font-bold text-m3-on-primary-container dark:text-m3-dark-on-primary-container mb-2 text-sm">
+                Ready to learn?
+              </h3>
+              <p className="text-xs text-m3-on-primary-container/80 dark:text-m3-dark-on-primary-container/80 mb-4 leading-relaxed">
+                Explore our professional training programs and start building real-world skills today.
+              </p>
+              <Link
+                to="/training"
+                className="inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 bg-m3-primary text-m3-on-primary rounded-full text-sm font-semibold transition-colors duration-200 hover:bg-m3-primary/90"
+              >
+                View Training Programs →
+              </Link>
             </div>
           </aside>
         </div>
+
+        {/* Related Posts */}
+        {related.length > 0 && (
+          <section className="mt-16 pt-12 border-t border-m3-outline-variant dark:border-m3-dark-outline">
+            <h2 className="text-2xl font-bold text-m3-on-surface dark:text-m3-dark-on-surface mb-8">
+              More from the Blog
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {related.map(article => (
+                <Link
+                  key={article.id}
+                  to={`/blog/${article.id}`}
+                  className="group bg-m3-surface-container-lowest dark:bg-m3-dark-surface-container-high rounded-m3-xl overflow-hidden shadow-sm hover:shadow-xl border border-m3-outline-variant transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                >
+                  <div className={`bg-gradient-to-br ${article.color} px-5 py-5 text-white`}>
+                    <span className="text-xs font-semibold tracking-widest uppercase bg-white/20 backdrop-blur-sm border border-white/30 px-2.5 py-0.5 rounded-full">
+                      {article.category}
+                    </span>
+                    <div className="text-4xl mt-3 drop-shadow">{article.icon}</div>
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <h3 className="text-sm font-bold text-m3-on-surface dark:text-m3-dark-on-surface mb-2 group-hover:text-m3-primary dark:group-hover:text-m3-dark-primary transition-colors leading-snug">
+                      {article.title}
+                    </h3>
+                    <div className="mt-auto pt-3 text-xs text-m3-on-surface-variant">
+                      {article.date} · {article.readTime}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   )

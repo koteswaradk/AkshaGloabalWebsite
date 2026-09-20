@@ -322,7 +322,7 @@ export default function KmpStudio() {
   const currentProd = products.find(p => p.id === selectedProduct)
 
   return (
-    <div className="bg-white dark:bg-[#070B14] min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-200">
+    <div className="bg-m3-surface dark:bg-m3-dark-surface min-h-screen text-m3-on-surface dark:text-m3-dark-on-surface">
       <SEO
         title="Kotlin Multiplatform (KMP) App Suite"
         description="Explore the Aksha Globals Kotlin Multiplatform (KMP) app architecture sharing 100% of Compose UI and logic across Android, iOS, Desktop & Web."
@@ -757,6 +757,7 @@ export default function KmpStudio() {
                     { id: 'products', label: 'Apps', icon: '📱' },
                     { id: 'training', label: 'Learn', icon: '🎓' },
                     { id: 'blog', label: 'Blog', icon: '📰' },
+                    { id: 'contact', label: 'Contact', icon: '📍' },
                   ].map(tab => (
                     <button
                       key={tab.id}
