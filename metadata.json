@@ -1,0 +1,6 @@
+{
+  "name": "Aksha Globals",
+  "description": "Innovative mobile apps, audio-visual studio, professional training courses in Android, iOS, GenAI, and Kotlin Multiplatform (KMP) app development.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

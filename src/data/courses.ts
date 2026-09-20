@@ -1,0 +1,387 @@
+export interface CurriculumItem {
+  topic: string
+}
+
+export interface CourseLevel {
+  name: string
+  duration: string
+  price: number
+  curriculum: string[]
+}
+
+export interface Course {
+  id: string
+  name: string
+  tagline: string
+  description: string
+  icon: string
+  color: string
+  students: string
+  rating: number
+  instructor: string
+  featured?: boolean
+  levels: CourseLevel[]
+}
+
+export const crossPlatformCourseIds = ['kmp-dev', 'cmp-dev'] as const
+
+export function getCrossPlatformCourses(courseList: Course[]) {
+  return courseList.filter(course => crossPlatformCourseIds.includes(course.id as (typeof crossPlatformCourseIds)[number]))
+}
+
+export function getDefaultSelectedCourseId(courseList: Course[]) {
+  return getCrossPlatformCourses(courseList)[0]?.id ?? courseList[0]?.id ?? null
+}
+
+export const courses: Course[] = [
+  {
+    id: 'android-dev',
+    name: 'Android Development',
+    tagline: 'Master Android app development with Kotlin and Jetpack Compose',
+    description: 'Master Android app development from fundamentals to advanced concepts. Learn to build production-ready apps using Kotlin, Jetpack Compose, and modern Android architecture patterns.',
+    icon: '🤖',
+    color: 'from-m3-primary to-m3-primary-10',
+    students: '15,000+',
+    rating: 4.8,
+    instructor: 'Rahul Sharma',
+    levels: [
+      {
+        name: 'Beginner',
+        duration: '4 Weeks',
+        price: 4999,
+        curriculum: [
+          'Introduction to Android & Kotlin',
+          'Android Studio setup and basics',
+          'Layouts and UI components',
+          'Activities and Intents',
+          'ListView and RecyclerView',
+          'SharedPreferences and SQLite',
+          'Networking with Retrofit',
+          'Build and publish your first app',
+        ],
+      },
+      {
+        name: 'Intermediate',
+        duration: '6 Weeks',
+        price: 8999,
+        curriculum: [
+          'Jetpack Compose fundamentals',
+          'MVVM Architecture pattern',
+          'Room Database & LiveData',
+          'Coroutines and Flow',
+          'Dependency Injection with Hilt',
+          'Firebase integration',
+          'Push notifications',
+          'Performance optimization',
+        ],
+      },
+      {
+        name: 'Certification',
+        duration: '8 Weeks',
+        price: 14999,
+        curriculum: [
+          'Advanced Compose animations',
+          'Custom views and canvas drawing',
+          'Multi-module architecture',
+          'CI/CD for Android',
+          'Testing: Unit, Integration, UI',
+          'Play Store deployment strategies',
+          'App security best practices',
+          'Capstone project with mentorship',
+          'Certification exam & project evaluation',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ios-dev',
+    name: 'iOS Development',
+    tagline: 'Build stunning iOS apps with Swift and SwiftUI',
+    description: 'Learn iOS app development with Swift and SwiftUI. From App Store guidelines to advanced animations, this course takes you from beginner to job-ready iOS developer.',
+    icon: '🍎',
+    color: 'from-m3-secondary to-m3-secondary-10',
+    students: '12,500+',
+    rating: 4.9,
+    instructor: 'Priya Kapoor',
+    levels: [
+      {
+        name: 'Basic',
+        duration: '4 Weeks',
+        price: 4999,
+        curriculum: [
+          'Swift fundamentals',
+          'Xcode IDE mastery',
+          'UIKit basics and Auto Layout',
+          'Navigation and Tab Bar Controllers',
+          'Table Views and Collection Views',
+          'Data persistence with UserDefaults',
+          'Networking with URLSession',
+          'Submit to TestFlight',
+        ],
+      },
+      {
+        name: 'Advanced',
+        duration: '6 Weeks',
+        price: 8999,
+        curriculum: [
+          'SwiftUI fundamentals',
+          'Combine framework',
+          'Core Data and CloudKit',
+          'MVVM pattern in iOS',
+          'Authentication with Sign in with Apple',
+          'ARKit and RealityKit basics',
+          'In-app purchases',
+          'App Store Connect and deployment',
+        ],
+      },
+      {
+        name: 'Expert',
+        duration: '8 Weeks',
+        price: 14999,
+        curriculum: [
+          'Advanced SwiftUI animations',
+          'Accessibility and localization',
+          'Widget and App Extension development',
+          'Core ML on-device intelligence',
+          'Metal graphics programming',
+          'Advanced testing strategies',
+          'Enterprise app distribution',
+          'Capstone project with mentorship',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'genai-ml',
+    name: 'Generative AI',
+    tagline: 'Harness the power of AI for creative and business applications',
+    description: 'Dive deep into Generative AI and its applications. Build LLM-powered applications, work with image generation models, and deploy scalable AI solutions using industry-leading tools and frameworks.',
+    icon: '🧠',
+    color: 'from-m3-tertiary to-m3-tertiary-10',
+    students: '20,000+',
+    rating: 4.9,
+    instructor: 'Dr. Arjun Patel',
+    featured: true,
+    levels: [
+      {
+        name: 'Basic',
+        duration: '4 Weeks',
+        price: 5999,
+        curriculum: [
+          'Python for Data Science',
+          'Introduction to Machine Learning',
+          'NumPy, Pandas, Matplotlib',
+          'Supervised and Unsupervised Learning',
+          'Introduction to Neural Networks',
+          'What is Generative AI?',
+          'Working with OpenAI API',
+          'Building your first AI chatbot',
+        ],
+      },
+      {
+        name: 'Advanced',
+        duration: '6 Weeks',
+        price: 10999,
+        curriculum: [
+          'Deep Learning with TensorFlow/PyTorch',
+          'Large Language Models (LLMs)',
+          'LangChain framework',
+          'RAG (Retrieval Augmented Generation)',
+          'Fine-tuning open-source models',
+          'Vector databases (Pinecone, ChromaDB)',
+          'Image generation with Stable Diffusion',
+          'AI application deployment',
+        ],
+      },
+      {
+        name: 'Expert',
+        duration: '8 Weeks',
+        price: 17999,
+        curriculum: [
+          'Advanced RAG architectures',
+          'Multi-agent systems with AutoGen',
+          'Model evaluation and benchmarking',
+          'Responsible AI and ethics',
+          'MLOps and model monitoring',
+          'Custom model training at scale',
+          'Enterprise AI solution design',
+          'Capstone: End-to-end AI product',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'prompt-engineering',
+    name: 'Prompt Engineering',
+    tagline: 'Master the art of communicating with AI systems effectively',
+    description: 'Become a Prompt Engineering expert. Learn advanced techniques to craft effective prompts for ChatGPT, Claude, Gemini, and other LLMs to build powerful AI-driven workflows and applications.',
+    icon: '✨',
+    color: 'from-m3-primary-10 to-m3-primary',
+    students: '18,000+',
+    rating: 4.7,
+    instructor: 'Sneha Reddy',
+    levels: [
+      {
+        name: 'Basic',
+        duration: '2 Weeks',
+        price: 2999,
+        curriculum: [
+          'Introduction to LLMs and how they work',
+          'Zero-shot and few-shot prompting',
+          'Chain-of-thought prompting',
+          'Role and persona prompting',
+          'Prompt structure best practices',
+          'Common pitfalls and how to fix them',
+          'Prompt testing and iteration',
+          'Practical use cases and exercises',
+        ],
+      },
+      {
+        name: 'Advanced',
+        duration: '3 Weeks',
+        price: 5499,
+        curriculum: [
+          'Advanced reasoning techniques',
+          'Tree-of-thought prompting',
+          'Constitutional AI principles',
+          'System prompts for applications',
+          'Prompt chaining and orchestration',
+          'Evaluation frameworks for prompts',
+          'Multi-modal prompting (text + image)',
+          'Building prompt libraries and templates',
+        ],
+      },
+      {
+        name: 'Expert',
+        duration: '4 Weeks',
+        price: 8999,
+        curriculum: [
+          'LLM fine-tuning via prompts (RLHF)',
+          'Automated prompt optimization',
+          'Red teaming and adversarial prompting',
+          'Enterprise prompt governance',
+          'Prompt engineering for agents',
+          'Industry-specific prompt strategies',
+          'Building prompt marketplaces',
+          'Capstone: Prompt Engineering portfolio',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'kmp-dev',
+    name: 'Kotlin Multiplatform (KMP)',
+    tagline: 'Share business logic across Android, iOS, desktop, and web with Kotlin',
+    description: 'Master Kotlin Multiplatform to build cross-platform applications with shared business logic. Learn to write Kotlin code once and run it on Android, iOS, desktop, and web while leveraging platform-specific integrations.',
+    icon: '🔷',
+    color: 'from-m3-primary-20 to-m3-secondary-30',
+    students: '8,000+',
+    rating: 4.8,
+    instructor: 'Vikram Desai',
+    levels: [
+      {
+        name: 'Basic',
+        duration: '4 Weeks',
+        price: 5999,
+        curriculum: [
+          'Introduction to Kotlin Multiplatform',
+          'Kotlin language fundamentals',
+          'Setting up KMP project structure',
+          'Shared module architecture',
+          'expect/actual declarations',
+          'Ktor for networking in KMP',
+          'Serialization with kotlinx.serialization',
+          'Building your first KMP app',
+        ],
+      },
+      {
+        name: 'Advanced',
+        duration: '6 Weeks',
+        price: 9999,
+        curriculum: [
+          'Advanced KMP project configuration',
+          'Shared ViewModels with KMP',
+          'SQLDelight for cross-platform database',
+          'Dependency injection with Koin',
+          'Kotlin Coroutines in multiplatform',
+          'Platform-specific implementations',
+          'KMP library publishing',
+          'Testing strategies for shared code',
+        ],
+      },
+      {
+        name: 'Expert',
+        duration: '8 Weeks',
+        price: 15999,
+        curriculum: [
+          'KMP architecture patterns at scale',
+          'Custom Gradle plugins for KMP',
+          'CI/CD pipelines for KMP projects',
+          'Performance optimization across platforms',
+          'Migration strategies from native codebases',
+          'KMP for backend with Ktor Server',
+          'Advanced debugging and profiling',
+          'Capstone: Full-stack KMP application',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'cmp-dev',
+    name: 'Compose Multiplatform (CMP)',
+    tagline: 'Build beautiful shared UIs across platforms with Jetpack Compose',
+    description: 'Learn Compose Multiplatform to create stunning, shared user interfaces for Android, iOS, desktop, and web. Master declarative UI development with Jetpack Compose and deploy consistently across targets.',
+    icon: '🎨',
+    color: 'from-m3-tertiary-20 to-m3-primary-30',
+    students: '6,500+',
+    rating: 4.7,
+    instructor: 'Meera Krishnan',
+    levels: [
+      {
+        name: 'Basic',
+        duration: '4 Weeks',
+        price: 5999,
+        curriculum: [
+          'Introduction to Compose Multiplatform',
+          'Compose UI fundamentals',
+          'Layouts, modifiers, and theming',
+          'State management in Compose',
+          'Navigation in Compose Multiplatform',
+          'Material Design 3 components',
+          'Handling platform differences',
+          'Building your first CMP app',
+        ],
+      },
+      {
+        name: 'Advanced',
+        duration: '6 Weeks',
+        price: 9999,
+        curriculum: [
+          'Advanced Compose layouts and custom components',
+          'Animation APIs in Compose',
+          'Shared resources and asset management',
+          'Integration with KMP shared logic',
+          'Platform-specific UI adaptations',
+          'Image loading and media handling',
+          'Accessibility in Compose Multiplatform',
+          'Performance tuning for Compose UI',
+        ],
+      },
+      {
+        name: 'Expert',
+        duration: '8 Weeks',
+        price: 15999,
+        curriculum: [
+          'Custom design systems in Compose',
+          'Advanced animation and gesture handling',
+          'Canvas drawing and custom rendering',
+          'Desktop and web platform specifics',
+          'Testing Compose Multiplatform UI',
+          'App distribution for all platforms',
+          'Production architecture patterns',
+          'Capstone: Cross-platform app with shared UI',
+        ],
+      },
+    ],
+  },
+]

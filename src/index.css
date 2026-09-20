@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+  --color-m3-primary: #006874;
+  --color-m3-on-primary: #ffffff;
+  --color-m3-primary-container: #97f0ff;
+  --color-m3-on-primary-container: #001f24;
+  --color-m3-primary-10: #001f24;
+  --color-m3-primary-20: #00363d;
+  --color-m3-primary-30: #004f58;
+  --color-m3-primary-50: #00838f;
+  --color-m3-secondary: #4a6267;
+  --color-m3-on-secondary: #ffffff;
+  --color-m3-secondary-container: #cde7ec;
+  --color-m3-on-secondary-container: #051f23;
+  --color-m3-secondary-10: #051f23;
+  --color-m3-secondary-20: #1c3438;
+  --color-m3-secondary-30: #334b4f;
+  --color-m3-tertiary: #525e7d;
+  --color-m3-on-tertiary: #ffffff;
+  --color-m3-tertiary-container: #dae2ff;
+  --color-m3-on-tertiary-container: #0e1b37;
+  --color-m3-tertiary-10: #0e1b37;
+  --color-m3-tertiary-20: #233247;
+  --color-m3-tertiary-30: #3a4565;
+  --color-m3-surface: #F9FAFB;
+  --color-m3-surface-dim: #d8dada;
+  --color-m3-surface-bright: #F9FAFB;
+  --color-m3-surface-container-lowest: #F9FAFB;
+  --color-m3-surface-container-low: #f2f4f4;
+  --color-m3-surface-container: #eceeee;
+  --color-m3-surface-container-high: #e6e8e8;
+  --color-m3-surface-container-highest: #e1e3e3;
+  --color-m3-on-surface: #191c1d;
+  --color-m3-on-surface-variant: #3f484a;
+  --color-m3-outline: #6f797a;
+  --color-m3-outline-variant: #bfc8ca;
+  --color-m3-error: #ba1a1a;
+  --color-m3-on-error: #ffffff;
+  --color-m3-error-container: #ffdad6;
+  --color-m3-on-error-container: #410002;
+
+  --color-m3-dark-primary: #4fd8eb;
+  --color-m3-dark-on-primary: #00363d;
+  --color-m3-dark-primary-container: #004f58;
+  --color-m3-dark-on-primary-container: #97f0ff;
+  --color-m3-dark-secondary: #b1cbd0;
+  --color-m3-dark-on-secondary: #1c3438;
+  --color-m3-dark-secondary-container: #334b4f;
+  --color-m3-dark-surface: #191c1d;
+  --color-m3-dark-surface-container: #1d2021;
+  --color-m3-dark-surface-container-high: #282a2b;
+  --color-m3-dark-surface-container-highest: #333536;
+  --color-m3-dark-on-surface: #e1e3e3;
+  --color-m3-dark-on-surface-variant: #bfc8ca;
+  --color-m3-dark-outline: #899294;
+
+  --radius-xs: 4px;
+  --radius-m3: 12px;
+  --radius-m3-lg: 16px;
+  --radius-m3-xl: 28px;
+  --radius-m3-2xl: 32px;
+
+  --shadow-m3-1: 0 1px 2px 0 rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15);
+  --shadow-m3-2: 0 1px 2px 0 rgba(0,0,0,0.3), 0 2px 6px 2px rgba(0,0,0,0.15);
+  --shadow-m3-3: 0 4px 8px 3px rgba(0,0,0,0.15), 0 1px 3px 0 rgba(0,0,0,0.3);
+}
+
+@layer base {
+  body {
+    background-color: #F8FAFC;
+    color: #0F172A;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .dark body {
+    background-color: #070B14;
+    color: #E2E8F0;
+  }
+}
+
+@keyframes cardSelectPulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 104, 116, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(0, 104, 116, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 104, 116, 0); }
+}
+
+@keyframes studioBannerFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes studioBannerFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes studioBannerPulse {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.05; }
+}
+
+.studio-banner-fade-up {
+  animation: studioBannerFadeUp 0.8s ease-out both;
+}
+
+.studio-banner-fade-up-delay-1 {
+  animation: studioBannerFadeUp 0.8s ease-out 0.2s both;
+}
+
+.studio-banner-fade-up-delay-2 {
+  animation: studioBannerFadeUp 0.8s ease-out 0.4s both;
+}
+
+.studio-banner-fade-up-delay-3 {
+  animation: studioBannerFadeUp 0.8s ease-out 0.6s both;
+}
+
+.studio-banner-float {
+  animation: studioBannerFloat 3s ease-in-out infinite;
+}
+
+.studio-banner-float-delayed {
+  animation: studioBannerFloat 3.5s ease-in-out 1s infinite;
+}
+
+.studio-banner-pulse {
+  animation: studioBannerPulse 2s ease-in-out infinite;
+}
